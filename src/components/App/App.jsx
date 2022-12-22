@@ -1,10 +1,13 @@
 import Home from 'pages/Home/Home';
 import { Routes, Route } from 'react-router-dom';
-import {NavigationLink,AppHeader,NavigationList,NavigationItem} from './App.styled'
+import { NavigationLink, AppHeader, NavigationList, NavigationItem,AppContainer } from './App.styled'
+import MovieDetails from 'pages/MovieDetails/MovieDetails'
+import Cast from 'components/Cast/Cast'
+import Reviews from 'components/Reviews/Reviews';
 
 export const App = () => {
   return (
-    <>
+    <AppContainer>
       <AppHeader>
         <nav>
           <NavigationList><li> <NavigationLink to="/" end> Home</NavigationLink></li>
@@ -18,12 +21,12 @@ export const App = () => {
          <Routes>
         <Route path="/" element={<Home/> } />
         <Route path="/movies" element={<div>Movies </div>} />
-        <Route path="/movies/:movieId" element={<div>MovieDetails</div>}>
-          <Route path="cast" element={<div>Cast</div>} />
-          <Route path="reviews" element={<div>Reviews</div>} />
+        <Route path="/movies/:movieId" element={<MovieDetails/>}>
+          <Route path="cast" element={<Cast/>} />
+          <Route path="reviews" element={<Reviews/>} />
       </Route>
       <Route path="*" element={<div>NotFound</div>} />
     </Routes>
-    </>
+    </AppContainer>
   );
 };

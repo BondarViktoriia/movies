@@ -43,3 +43,7 @@ export const NavigationLink = styled(NavLink)`
     );
   }
 `;
+
+export const AppContainer = styled.body`
+    background-color: #80001254;
+`
