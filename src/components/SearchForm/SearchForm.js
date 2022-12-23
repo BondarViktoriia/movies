@@ -5,7 +5,9 @@ const SearchForm = ({ onSubmit, value }) => {
     
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit(e.target.elements.query.value);
+     const form = e.target;
+    onSubmit(form.elements.query.value);
+    form.reset();
   };
 
     return (
