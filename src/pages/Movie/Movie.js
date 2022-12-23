@@ -3,6 +3,8 @@ import { getMovies } from 'components/services/Api';
 import TrendingMovies from 'components/TrendingMovies/TrendingMovies';
 import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
+import { MovieTitle } from './Movie.styled';
+
 const Movie = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [, setError] = useState(null);
@@ -40,7 +42,7 @@ const Movie = () => {
   return (
     <main>
       <section>
-        <h1>Search movies</h1>
+        <MovieTitle>Search movies</MovieTitle>
         <SearchForm onSubmit={onSubmit} value={searchQuery} />
         {searchMovies?.length > 0 && (
           <TrendingMovies movies={searchMovies} location={location} />

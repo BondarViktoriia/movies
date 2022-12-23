@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {Form,Input,SearchButton } from './SearchForm.styled'
 
 const SearchForm = ({ onSubmit, value }) => {
     
@@ -9,10 +10,10 @@ const SearchForm = ({ onSubmit, value }) => {
 
     return (
            <>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="query" defaultValue={value}/>
-        <button type="submit">Search</button>
-      </form>
+      <Form onSubmit={handleSubmit}>
+        <Input type="text" name="query" defaultValue={value}/>
+        <SearchButton type="submit">Search</SearchButton>
+      </Form>
       
     </>
     )
