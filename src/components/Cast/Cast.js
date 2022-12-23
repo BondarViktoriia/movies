@@ -1,6 +1,14 @@
 import { getCast } from 'components/services/Api';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+  CastContainer,
+  CastList,
+  CastItem,
+  ActorName,
+  CharacterDescription,
+} from './Cast.styled';
+import imageNotFound from '../../images/notfound.png';
 
 const Cast = () => {
   const [actors, setActors] = useState([]);
@@ -14,19 +22,29 @@ const Cast = () => {
     return;
   }
 
+  console.log(actors);
   return (
     <>
-      <div>
-        <ul>
+      <CastContainer>
+        <CastList>
           {actors.map(({ id, name, profilePath, character }) => (
-              <li key={id}>
-                  <img src={`https://image.tmdb.org/t/p/w500/${profilePath}`} alt={name} width='150' />
-                  <p>{name} </p>
-                  <p>Character:{character }</p>
-            </li>
+            <CastItem key={id}>
+              <img
+                src={
+                  profilePath !== null
+                    ? `https://image.tmdb.org/t/p/w500/${profilePath}`
+                    : imageNotFound
+                }
+                alt={name}
+                width="250"
+                height="375"
+              />
+              <ActorName>{name} </ActorName>
+              <CharacterDescription>Character:{character}</CharacterDescription>
+            </CastItem>
           ))}
-        </ul>
-      </div>
+        </CastList>
+      </CastContainer>
     </>
   );
 };

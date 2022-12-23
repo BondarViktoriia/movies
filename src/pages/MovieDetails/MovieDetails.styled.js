@@ -76,20 +76,30 @@ text-align:center;
 export const AdditionalList = styled.ul`
 display: flex;
     justify-content: center;
+    gap: 32px;
+    margin-bottom: 32px;
 `
 export const AdditionalLink = styled(NavLink)`
  width: 120px;
  height: 40px;
 
- margin-right:20px;
+
  text-decoration: none;
  text-transform:uppercase;
+ font-weight: bold;
  color:black;
 text-align:center;
 margin-bottom:30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
 
   &.active{
     color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align:center;
     background: rgb(27,28,29);
 background: radial-gradient(circle, rgba(27,28,29,1) 0%, rgba(212,19,33,1) 100%);
   }
@@ -97,6 +107,10 @@ background: radial-gradient(circle, rgba(27,28,29,1) 0%, rgba(212,19,33,1) 100%)
   :hover:not(.active),
   :focus-visible:not(.active){
         color:white;
+        display: flex;
+    flex-direction: column;
+         justify-content: center;
+             text-align:center;
         background: rgb(27,28,29);
 background: radial-gradient(circle, rgba(27,28,29,1) 0%, rgba(212,19,33,1) 100%);
 

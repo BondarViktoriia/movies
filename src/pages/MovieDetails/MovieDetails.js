@@ -1,6 +1,6 @@
 import { getMovieById } from 'components/services/Api';
 import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import {
   MovieDetailsContainer,
   DetailsContainer,
