@@ -27,3 +27,10 @@ export const ActorName = styled.p`
 export const CharacterDescription = styled.p`
   font-size: 20px;
 `;
+
+export const NoActors = styled.p`
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 50px;
+`;

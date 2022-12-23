@@ -7,22 +7,31 @@ import {
   CastItem,
   ActorName,
   CharacterDescription,
+  NoActors,
 } from './Cast.styled';
 import imageNotFound from '../../images/notfound.png';
 
 const Cast = () => {
   const [actors, setActors] = useState([]);
   const { movieId } = useParams();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getCast(movieId).then(actors => setActors(actors));
-  }, [movieId]);
+    getCast(movieId)
+      .then(actors => {
+        setActors(actors);
+        setError(null);
+      })
+      .catch(error => {
+        setError(error);
+        setActors([]);
+      });
+  }, [movieId, error]);
 
   if (!actors) {
     return;
   }
 
-  console.log(actors);
   return (
     <>
       <CastContainer>
@@ -45,6 +54,9 @@ const Cast = () => {
           ))}
         </CastList>
       </CastContainer>
+      {actors.length === 0 && !error && (
+        <NoActors>There is no information here yet</NoActors>
+      )}
     </>
   );
 };

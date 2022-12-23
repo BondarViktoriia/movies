@@ -68,9 +68,31 @@ export const getReviews = async movieId => {
       language: 'en-US',
     },
   });
-    const reviewsMaper = reviews => {
-  return reviews.map(({ id, author, content }) => ({ id, author, content }));
-    };
-    return reviewsMaper(data.results)
+  const reviewsMaper = reviews => {
+    return reviews.map(({ id, author, content }) => ({ id, author, content }));
+  };
+  return reviewsMaper(data.results);
+};
 
-}; 
+export const getMovies = async query => {
+  const { data } = await axios.get(`/search/movie`, {
+    params: {
+      api_key: API_KEY,
+      language: 'en-US',
+      query,
+      page: 1,
+      include_adult: false,
+    },
+  });
+  const moviesMaper = movies => {
+    return movies.map(
+      ({ id, title, poster_path: posterPath, release_date: releaseDate }) => ({
+        id,
+        title,
+        posterPath,
+        releaseDate,
+      })
+    );
+  };
+  return moviesMaper(data.results);
+};

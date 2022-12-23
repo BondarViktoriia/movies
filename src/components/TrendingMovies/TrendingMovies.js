@@ -7,16 +7,22 @@ import {
   TrendingMoviesData
 } from './TrendingMovies.styled';
 import PropTypes from 'prop-types';
+import imageNotFound from '../../images/notfound.png';
 
-const TrendingMovies = ({ trending }) => {
+const TrendingMovies = ({ movies,location }) => {
   return (
     <>
       <TrendingMoviesList>
-        {trending.map(({ id, posterPath, title, releaseDate }) => (
-          <TrendingLink to={`/movies/${id}`}>
+        {movies.map(({ id, posterPath, title, releaseDate }) => (
+          <TrendingLink to={`/movies/${id}`} state={{ from: location }}>
             <TrendingMoviesItem key={id}>
               <TrendingMoviesImg
-                src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
+                 src={
+                  posterPath 
+                    ? `https://image.tmdb.org/t/p/w500/${posterPath}`
+                    : imageNotFound
+                }
+            
                 alt={title}
                 width="320"
               />
@@ -39,7 +45,9 @@ TrendingMovies.propTypes = {
     posterPath: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
     title:PropTypes.string.isRequired,
-  }),)
+  }),),
+  location:PropTypes.object.isRequired,
+
 }
 
 export default TrendingMovies;
